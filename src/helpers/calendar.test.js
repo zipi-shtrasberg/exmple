@@ -1,0 +1,151 @@
+import {
+  getMonthlyCalendarGrid,
+  getWeekdaysDescriptions,
+  toLocalWeekdayNumber,
+} from './calendar';
+
+describe('helpers::calendar', () => {
+  test('toLocalWeekdayNumber', () => {
+    expect(toLocalWeekdayNumber(1)).toBe(2);
+    expect(toLocalWeekdayNumber(2)).toBe(3);
+    expect(toLocalWeekdayNumber(3)).toBe(4);
+    expect(toLocalWeekdayNumber(5)).toBe(6);
+    expect(toLocalWeekdayNumber(6)).toBe(7);
+    expect(toLocalWeekdayNumber(7)).toBe(1);
+  });
+
+  test('getWeekDaysDescriptions', () => {
+    expect(getWeekdaysDescriptions()).toEqual([
+      { long: 'Sunday', narrow: 'S', short: 'Sun' },
+      { long: 'Monday', narrow: 'M', short: 'Mon' },
+      { long: 'Tuesday', narrow: 'T', short: 'Tue' },
+      { long: 'Wednesday', narrow: 'W', short: 'Wed' },
+      { long: 'Thursday', narrow: 'T', short: 'Thu' },
+      { long: 'Friday', narrow: 'F', short: 'Fri' },
+      { long: 'Saturday', narrow: 'S', short: 'Sat' },
+    ]);
+  });
+
+  test('getMonthlyCalendarGrid', () => {
+    expect(getMonthlyCalendarGrid('2020-12')).toEqual([
+      { key: '2020-11-29', text: '29', trailing: true, isWeekend: true },
+      { key: '2020-11-30', text: '30', trailing: true, isWeekend: false },
+      { key: '2020-12-01', text: '1', trailing: false, isWeekend: false },
+      { key: '2020-12-02', text: '2', trailing: false, isWeekend: false },
+      { key: '2020-12-03', text: '3', trailing: false, isWeekend: false },
+      { key: '2020-12-04', text: '4', trailing: false, isWeekend: false },
+      { key: '2020-12-05', text: '5', trailing: false, isWeekend: true },
+      { key: '2020-12-06', text: '6', trailing: false, isWeekend: true },
+      { key: '2020-12-07', text: '7', trailing: false, isWeekend: false },
+      { key: '2020-12-08', text: '8', trailing: false, isWeekend: false },
+      { key: '2020-12-09', text: '9', trailing: false, isWeekend: false },
+      { key: '2020-12-10', text: '10', trailing: false, isWeekend: false },
+      { key: '2020-12-11', text: '11', trailing: false, isWeekend: false },
+      { key: '2020-12-12', text: '12', trailing: false, isWeekend: true },
+      { key: '2020-12-13', text: '13', trailing: false, isWeekend: true },
+      { key: '2020-12-14', text: '14', trailing: false, isWeekend: false },
+      { key: '2020-12-15', text: '15', trailing: false, isWeekend: false },
+      { key: '2020-12-16', text: '16', trailing: false, isWeekend: false },
+      { key: '2020-12-17', text: '17', trailing: false, isWeekend: false },
+      { key: '2020-12-18', text: '18', trailing: false, isWeekend: false },
+      { key: '2020-12-19', text: '19', trailing: false, isWeekend: true },
+      { key: '2020-12-20', text: '20', trailing: false, isWeekend: true },
+      { key: '2020-12-21', text: '21', trailing: false, isWeekend: false },
+      { key: '2020-12-22', text: '22', trailing: false, isWeekend: false },
+      { key: '2020-12-23', text: '23', trailing: false, isWeekend: false },
+      { key: '2020-12-24', text: '24', trailing: false, isWeekend: false },
+      { key: '2020-12-25', text: '25', trailing: false, isWeekend: false },
+      { key: '2020-12-26', text: '26', trailing: false, isWeekend: true },
+      { key: '2020-12-27', text: '27', trailing: false, isWeekend: true },
+      { key: '2020-12-28', text: '28', trailing: false, isWeekend: false },
+      { key: '2020-12-29', text: '29', trailing: false, isWeekend: false },
+      { key: '2020-12-30', text: '30', trailing: false, isWeekend: false },
+      { key: '2020-12-31', text: '31', trailing: false, isWeekend: false },
+      { key: '2021-01-01', text: '1', trailing: true, isWeekend: false },
+      { key: '2021-01-02', text: '2', trailing: true, isWeekend: true },
+    ]);
+
+    expect(getMonthlyCalendarGrid('2020-11')).toEqual([
+      { key: '2020-11-01', text: '1', trailing: false, isWeekend: true },
+      { key: '2020-11-02', text: '2', trailing: false, isWeekend: false },
+      { key: '2020-11-03', text: '3', trailing: false, isWeekend: false },
+      { key: '2020-11-04', text: '4', trailing: false, isWeekend: false },
+      { key: '2020-11-05', text: '5', trailing: false, isWeekend: false },
+      { key: '2020-11-06', text: '6', trailing: false, isWeekend: false },
+      { key: '2020-11-07', text: '7', trailing: false, isWeekend: true },
+      { key: '2020-11-08', text: '8', trailing: false, isWeekend: true },
+      { key: '2020-11-09', text: '9', trailing: false, isWeekend: false },
+      { key: '2020-11-10', text: '10', trailing: false, isWeekend: false },
+      { key: '2020-11-11', text: '11', trailing: false, isWeekend: false },
+      { key: '2020-11-12', text: '12', trailing: false, isWeekend: false },
+      { key: '2020-11-13', text: '13', trailing: false, isWeekend: false },
+      { key: '2020-11-14', text: '14', trailing: false, isWeekend: true },
+      { key: '2020-11-15', text: '15', trailing: false, isWeekend: true },
+      { key: '2020-11-16', text: '16', trailing: false, isWeekend: false },
+      { key: '2020-11-17', text: '17', trailing: false, isWeekend: false },
+      { key: '2020-11-18', text: '18', trailing: false, isWeekend: false },
+      { key: '2020-11-19', text: '19', trailing: false, isWeekend: false },
+      { key: '2020-11-20', text: '20', trailing: false, isWeekend: false },
+      { key: '2020-11-21', text: '21', trailing: false, isWeekend: true },
+      { key: '2020-11-22', text: '22', trailing: false, isWeekend: true },
+      { key: '2020-11-23', text: '23', trailing: false, isWeekend: false },
+      { key: '2020-11-24', text: '24', trailing: false, isWeekend: false },
+      { key: '2020-11-25', text: '25', trailing: false, isWeekend: false },
+      { key: '2020-11-26', text: '26', trailing: false, isWeekend: false },
+      { key: '2020-11-27', text: '27', trailing: false, isWeekend: false },
+      { key: '2020-11-28', text: '28', trailing: false, isWeekend: true },
+      { key: '2020-11-29', text: '29', trailing: false, isWeekend: true },
+      { key: '2020-11-30', text: '30', trailing: false, isWeekend: false },
+      { key: '2020-12-01', text: '1', trailing: true, isWeekend: false },
+      { key: '2020-12-02', text: '2', trailing: true, isWeekend: false },
+      { key: '2020-12-03', text: '3', trailing: true, isWeekend: false },
+      { key: '2020-12-04', text: '4', trailing: true, isWeekend: false },
+      { key: '2020-12-05', text: '5', trailing: true, isWeekend: true },
+    ]);
+
+    expect(getMonthlyCalendarGrid('2021-05')).toEqual([
+      { key: '2021-04-25', text: '25', trailing: true, isWeekend: true },
+      { key: '2021-04-26', text: '26', trailing: true, isWeekend: false },
+      { key: '2021-04-27', text: '27', trailing: true, isWeekend: false },
+      { key: '2021-04-28', text: '28', trailing: true, isWeekend: false },
+      { key: '2021-04-29', text: '29', trailing: true, isWeekend: false },
+      { key: '2021-04-30', text: '30', trailing: true, isWeekend: false },
+      { key: '2021-05-01', text: '1', trailing: false, isWeekend: true },
+      { key: '2021-05-02', text: '2', trailing: false, isWeekend: true },
+      { key: '2021-05-03', text: '3', trailing: false, isWeekend: false },
+      { key: '2021-05-04', text: '4', trailing: false, isWeekend: false },
+      { key: '2021-05-05', text: '5', trailing: false, isWeekend: false },
+      { key: '2021-05-06', text: '6', trailing: false, isWeekend: false },
+      { key: '2021-05-07', text: '7', trailing: false, isWeekend: false },
+      { key: '2021-05-08', text: '8', trailing: false, isWeekend: true },
+      { key: '2021-05-09', text: '9', trailing: false, isWeekend: true },
+      { key: '2021-05-10', text: '10', trailing: false, isWeekend: false },
+      { key: '2021-05-11', text: '11', trailing: false, isWeekend: false },
+      { key: '2021-05-12', text: '12', trailing: false, isWeekend: false },
+      { key: '2021-05-13', text: '13', trailing: false, isWeekend: false },
+      { key: '2021-05-14', text: '14', trailing: false, isWeekend: false },
+      { key: '2021-05-15', text: '15', trailing: false, isWeekend: true },
+      { key: '2021-05-16', text: '16', trailing: false, isWeekend: true },
+      { key: '2021-05-17', text: '17', trailing: false, isWeekend: false },
+      { key: '2021-05-18', text: '18', trailing: false, isWeekend: false },
+      { key: '2021-05-19', text: '19', trailing: false, isWeekend: false },
+      { key: '2021-05-20', text: '20', trailing: false, isWeekend: false },
+      { key: '2021-05-21', text: '21', trailing: false, isWeekend: false },
+      { key: '2021-05-22', text: '22', trailing: false, isWeekend: true },
+      { key: '2021-05-23', text: '23', trailing: false, isWeekend: true },
+      { key: '2021-05-24', text: '24', trailing: false, isWeekend: false },
+      { key: '2021-05-25', text: '25', trailing: false, isWeekend: false },
+      { key: '2021-05-26', text: '26', trailing: false, isWeekend: false },
+      { key: '2021-05-27', text: '27', trailing: false, isWeekend: false },
+      { key: '2021-05-28', text: '28', trailing: false, isWeekend: false },
+      { key: '2021-05-29', text: '29', trailing: false, isWeekend: true },
+      { key: '2021-05-30', text: '30', trailing: false, isWeekend: true },
+      { key: '2021-05-31', text: '31', trailing: false, isWeekend: false },
+      { key: '2021-06-01', text: '1', trailing: true, isWeekend: false },
+      { key: '2021-06-02', text: '2', trailing: true, isWeekend: false },
+      { key: '2021-06-03', text: '3', trailing: true, isWeekend: false },
+      { key: '2021-06-04', text: '4', trailing: true, isWeekend: false },
+      { key: '2021-06-05', text: '5', trailing: true, isWeekend: true },
+    ]);
+  });
+});
